@@ -14,6 +14,7 @@ export class UserService {
       },
     });
     console.log(user);
+    // 1
     if (user) throw new ConflictException('email dublicated');
     const pass = await hash(dto.password, 10);
     const newUser = await this.prisma.user.create({
@@ -30,6 +31,14 @@ export class UserService {
     return await this.prisma.user.findUnique({
       where: {
         email: email,
+      },
+    });
+  }
+
+  async findById(id: string) {
+    return await this.prisma.user.findUnique({
+      where: {
+        id: id,
       },
     });
   }
