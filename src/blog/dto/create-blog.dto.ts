@@ -1,11 +1,5 @@
 import { Prisma } from '@prisma/client';
-import {
-  ArrayMinSize,
-  IsArray,
-  IsJSON,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { ArrayMinSize, IsArray, IsOptional, IsString } from 'class-validator';
 
 export class CreateBlogDto {
   @IsString()

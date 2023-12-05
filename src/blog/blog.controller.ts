@@ -6,7 +6,6 @@ import {
   Patch,
   Param,
   Delete,
-  UseFilters,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';

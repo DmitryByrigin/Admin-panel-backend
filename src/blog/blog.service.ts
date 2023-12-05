@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreateBlogDto } from './dto/create-blog.dto';
 import { UpdateBlogDto } from './dto/update-blog.dto';
 import { PrismaService } from 'src/prisma.service';
-import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class BlogService {
@@ -34,8 +33,17 @@ export class BlogService {
     });
   }
 
-  async update(id: number, updateBlogDto: UpdateBlogDto) {
-    return `This action updates a #${id} blog`;
+  async update(id: number, dto: UpdateBlogDto) {
+    return this.prisma.blog.update({
+      data: {
+        title: dto.title,
+        image: dto.image,
+        content: dto.content,
+        categories: dto.categories,
+        userId: dto.userId,
+      },
+      where: { id },
+    });
   }
 
   async remove(id: number) {
