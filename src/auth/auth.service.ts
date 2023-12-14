@@ -24,22 +24,23 @@ export class AuthService {
     };
     // console.log(user);
     console.log(dto);
-    const tokens = await this.generateTokens(user.email, user.name);
+    const tokens = await this.generateTokens(user.email, user.name, user.id);
     return {
       user,
       backendTokens: tokens,
     };
   }
-  async generateTokens(email: string, name: string) {
+  async generateTokens(email: string, name: string, id: string) {
     const payload = {
       username: email,
+      id: id,
       sub: {
         name: name,
       },
     };
     return {
       accessToken: await this.jwtService.signAsync(payload, {
-        expiresIn: '1m',
+        expiresIn: '1h',
         secret: process.env.jwtSecretKey,
       }),
       refreshToken: await this.jwtService.signAsync(payload, {
@@ -53,6 +54,7 @@ export class AuthService {
     const user = await this.userService.findByEmail(dto.email);
 
     if (user && (await compare(dto.password, user.password))) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...result } = user;
       return result;
     }
@@ -62,9 +64,14 @@ export class AuthService {
   async refreshToken(user: any) {
     const payload = {
       username: user.email,
+      id: user.id,
       sub: user.sub,
     };
-    const tokens = await this.generateTokens(user.username, user.sub.name);
+    const tokens = await this.generateTokens(
+      user.username,
+      user.sub.name,
+      user.id,
+    );
     return tokens;
   }
 
@@ -81,6 +88,7 @@ export class AuthService {
     // Создайте и верните токены для пользователя, как вы делаете в методе login
     const payload = {
       username: user.email,
+      id: user.id,
       sub: {
         name: user.name,
       },

@@ -1,15 +1,8 @@
 import { CreateUserDto, CreateUserGoogleDto } from 'src/user/dto/user.dto';
 import { UserService } from '../user/user.service';
-import {
-  Body,
-  Controller,
-  Post,
-  Request,
-  Res,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Post, Request, UseGuards } from '@nestjs/common';
 import { LoginDto } from './dto/auth.dto';
-import { Response } from 'express';
+
 import { AuthService } from './auth.service';
 import { RefreshJwtGuard } from './guards/refresh.guard';
 

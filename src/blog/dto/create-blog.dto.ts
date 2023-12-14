@@ -17,6 +17,5 @@ export class CreateBlogDto {
   @IsString({ each: true })
   categories: string[];
 
-  @IsString()
   userId: string;
 }
