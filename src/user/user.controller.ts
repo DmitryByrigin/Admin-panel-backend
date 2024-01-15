@@ -11,4 +11,20 @@ export class UserController {
   async getUserProfile(@Param('id') id: string) {
     return await this.userService.findById(id);
   }
+  // @UseGuards(JwtGuard)
+  // @Post('upload')
+  // @UseInterceptors(FileInterceptor('file', storage))
+  // uploadFile(@UploadedFile() file): Observable<object> {
+  //   console.log(typeof file?.filename);
+  //   return of({ imagePath: file.path });
+  // }
+  // @Get('profile-image/:imagename')
+  // findProfileImage(
+  //   @Param('imagename') imagename,
+  //   @Res() res,
+  // ): Observable<object> {
+  //   return of(
+  //     res.sendfile(join(process.cwd(), 'uploads/profileimages/' + imagename)),
+  //   );
+  // }
 }
