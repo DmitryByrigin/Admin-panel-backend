@@ -72,8 +72,8 @@ Support our work if you want)
 
 ## Stay in touch
 
-- Authors - [Dmitry Burygin]([(https://github.com/DmitryByrigin?tab=overview&from=2023-12-01&to=2023-12-31)]),
-[Ponomarov Artem]([(https://github.com/Aspergillusplay)])
+- Authors - [Dmitry Burygin](https://github.com/DmitryByrigin?tab=overview&from=2023-12-01&to=2023-12-31),
+[Ponomarov Artem](https://github.com/Aspergillusplay)
 
 
 ## License
