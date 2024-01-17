@@ -31,38 +31,55 @@
 ```bash
 # make nest global
 $ yarn global add @nestjs/cli
+
 # create backend project
 $ nest new backend_admin_panel
+
 # installation of prisma
 $ yarn add prisma --save-dev
+
 # new configuration file
 $ yarn prisma init
+
 # installation client prisma
 $ yarn add @prisma/client
+
 # prisma generation
 $ yarn prisma generate
+
 # new module 
 $ nest g mo user
+
 # new service
 $ nest g s user
+
 # new controller
 $ nest g co user
+
 # installation module mapped-types
 $ yarn add @nestjs/mapped-types
+
 # installation library class-validator to using decorators
 $ yarn add class-validator
+
 # installation library class-transformer
 $ yarn add class-transformer
+
 # installation library bcrypt
 $ yarn add bcrypt
+
 # installation types for bcrypt
 $ yarn add -D @types/bcrypt
+
 # installation Prisma CLI
 $ npm install @prisma/cli
+
 # Starts Prisma Studio
 $ yarn prisma studio
+
 # Random key generation
 $ node -e "console.log(require('crypto').randomBytes(64).toString('base64'))"
+
 # installation jwt tokens
 $ yarn add @nestjs/jwt
 ```
