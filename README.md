@@ -84,6 +84,12 @@ $ node -e "console.log(require('crypto').randomBytes(64).toString('base64'))"
 $ yarn add @nestjs/jwt
 ```
 
+## Server
+
+```bash
+http://localhost:3000/
+```
+
 ## Installation
 
 ```bash
