@@ -68,14 +68,14 @@ $ yarn run test:cov
 
 ## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Support our work if you want)
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Authors - [Dmitry Burygin]([https://kamilmysliwiec.com](https://github.com/DmitryByrigin?tab=overview&from=2023-12-01&to=2023-12-31)),
+[Ponomarov Artem]([https://kamilmysliwiec.com](https://github.com/Aspergillusplay))
+
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+Free license.
