@@ -10,9 +10,31 @@
 
 ## Installation
 1. Install project
-2. 
+```bash
+$ git clone
+```
+
+2.
+```bash
+$ cd Admin-panel-backend
+```
+
+3. 
 ```bash
 $ npm i
+```
+
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
 ```
 
 ## Setting up the backend
@@ -40,18 +62,7 @@ http://localhost:3000/
 ```
 
 
-## Running the app
 
-```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
-```
 
 ## Test
 
