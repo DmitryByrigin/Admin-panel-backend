@@ -11,7 +11,7 @@
 ## Installation
 1. Install project
 ```bash
-$ git clone
+$ git clone https://github.com/DmitryByrigin/Admin-panel-backend.git
 ```
 
 2.
