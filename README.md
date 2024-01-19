@@ -24,6 +24,28 @@ $ cd Admin-panel-backend
 $ npm i
 ```
 
+## Setting up the backend
+
+```bash
+
+# prisma generation
+$ prisma generate
+
+# installation Prisma CLI
+$ npm install @prisma/cli
+
+# Starts Prisma Studio
+$ prisma studio
+
+```
+
+## .env
+
+```bash
+# Random jwttoken generation
+$ node -e "console.log(require('crypto').randomBytes(64).toString('base64'))"
+```
+
 ## Running the app
 
 ```bash
@@ -37,23 +59,9 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Setting up the backend
+### It is desirable to enter all commands for startup and installation into the terminal.
 
-```bash
 
-# prisma generation
-$ npm prisma generate
-
-# installation Prisma CLI
-$ npm install @prisma/cli
-
-# Starts Prisma Studio
-$ npm prisma studio
-
-# Random jwttoken generation
-$ node -e "console.log(require('crypto').randomBytes(64).toString('base64'))"
-
-```
 
 ## Server
 
@@ -62,6 +70,16 @@ http://localhost:3000/
 ```
 
 
+## Possible errors
+
+PS C:\Работа\Обучение новым технологиям\Admin-panel-backend> prisma generate
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Error: 
+EPERM: operation not permitted, unlink 'C:\Работа\Обучение новым технологиям\Admin-panel-backend\node_modules\.prisma\client\query_engine-windows.dll.node'
+
+### To fix
+Close all unnecessary terminals
 
 
 ## Test
