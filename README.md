@@ -1,4 +1,4 @@
-# Шаблон для блога на Nest, Prisma, PostgreSQL, ZOD, bcrypt и Docker
+# This is a template of backend for blog using Nest, Prisma, PostgreSQL, ZOD, bcrypt and Docker
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
@@ -7,7 +7,7 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-## Используемые технологии
+## Technologies Used
 
 - Nest
 - Prisma
