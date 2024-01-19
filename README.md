@@ -18,17 +18,17 @@
 
 
 ## Installation
-1. Install project
+1. Download from repository
 ```bash
 $ git clone https://github.com/DmitryByrigin/Admin-panel-backend.git
 ```
 
-2.
+2. Go to the root folder of the project
 ```bash
 $ cd Admin-panel-backend
 ```
 
-3. 
+3. Install all dependencies
 ```bash
 $ npm i
 ```
