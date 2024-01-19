@@ -31,6 +31,9 @@ $ npm i
 # prisma generation
 $ prisma generate
 
+# prisma migration
+$ prisma migrate
+
 # Starts Prisma Studio
 $ prisma studio
 
