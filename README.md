@@ -115,9 +115,6 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
-## Support
-
-Support our work if you want)
 
 ## Stay in touch
 
