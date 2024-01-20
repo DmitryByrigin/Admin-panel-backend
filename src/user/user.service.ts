@@ -1,7 +1,13 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/user.dto';
-import { hash } from 'bcrypt';
+import { compare, hash } from 'bcrypt';
 import { PrismaService } from '../prisma.service';
+import { PasswordMismatchException } from '../../exceptions/passwordMismatchException';
+
 @Injectable()
 export class UserService {
   constructor(private prisma: PrismaService) {}
@@ -62,6 +68,45 @@ export class UserService {
       where: {
         id: id,
       },
+    });
+  }
+
+  async changePassword(
+    userId: string,
+    currentPass: string,
+    newPass: string,
+    confirmPass: string,
+  ) {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) throw new NotFoundException();
+
+    const isMatch = await compare(currentPass, user.password);
+
+    if (!isMatch) throw new PasswordMismatchException();
+
+    if (newPass !== confirmPass) throw new PasswordMismatchException();
+
+    const hashedNewPass = await hash(newPass, 10);
+
+    return this.prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        password: hashedNewPass,
+      },
+    });
+  }
+
+  async updateProfileImage(userId: string, image: string) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: { profileImage: image },
     });
   }
 }

@@ -20,6 +20,6 @@ import { ImageModule } from './image/image.module';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).forRoutes('blog');
+    consumer.apply(AuthMiddleware).forRoutes('blog', 'user');
   }
 }
