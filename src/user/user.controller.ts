@@ -10,7 +10,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { JwtGuard } from 'src/auth/guards/jwt.guard';
-import { ExtractId } from '../../decorators/extractId';
+import { ExtractId } from '../decorators/extractId';
 import { ChangePasswordDto } from './dto/changePassword.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
@@ -47,7 +47,7 @@ export class UserController {
   @UseInterceptors(
     FileInterceptor('image', {
       storage: diskStorage({
-        destination: './uploads', // путь к папке загрузки
+        destination: './uploads/profileImages', // путь к папке загрузки
         filename: (req, file, cb) => {
           const randomName = Array(32)
             .fill(null)

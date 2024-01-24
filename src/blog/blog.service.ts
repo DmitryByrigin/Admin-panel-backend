@@ -1,4 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateBlogDto } from './dto/create-blog.dto';
 import { UpdateBlogDto } from './dto/update-blog.dto';
 import { PrismaService } from 'src/prisma.service';
@@ -58,6 +63,7 @@ export class BlogService {
           select: {
             name: true,
             surname: true,
+            profileImage: true,
           },
         },
       },
@@ -83,6 +89,8 @@ export class BlogService {
           select: {
             name: true,
             surname: true,
+            role: true,
+            profileImage: true,
           },
         },
         comments: {
@@ -91,6 +99,7 @@ export class BlogService {
               select: {
                 name: true,
                 surname: true,
+                profileImage: true,
               },
             },
           },
@@ -113,11 +122,34 @@ export class BlogService {
   }
 
   async remove(id: number) {
-    return this.prisma.blog.delete({
-      where: {
-        id,
-      },
-    });
+    try {
+      const post = await this.prisma.blog.findUnique({
+        where: {
+          id: parseInt(String(id)),
+        },
+      });
+      if (post === null) {
+        throw new HttpException('Post not found', HttpStatus.NOT_FOUND);
+      }
+      const deletedPost = await this.prisma.blog.delete({
+        where: {
+          id: parseInt(String(id)),
+        },
+      });
+      if (deletedPost === null) {
+        throw new HttpException(
+          'Error in deleting post',
+          HttpStatus.INTERNAL_SERVER_ERROR,
+        );
+      }
+      return 'Post deleted successfully';
+    } catch (error) {
+      console.error('Error in deleting a post:', error);
+      throw new HttpException(
+        'Error in deleting a post',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   async addLike(id: number, userId: string) {
@@ -189,22 +221,38 @@ export class BlogService {
   }
 
   async addComment(
-    id: number,
+    userId: string,
+    blogId: number,
     createCommentDto: CreateCommentDto,
   ): Promise<any> {
-    const blogInfo = await this.prisma.blog.findUnique({ where: { id } });
+    const blogInfo = await this.prisma.blog.findUnique({
+      where: { id: blogId },
+    });
     console.log(blogInfo.userId);
     try {
       return await this.prisma.comment.create({
         data: {
           text: createCommentDto.text,
-          userId: blogInfo.userId,
-          blogId: id,
+          userId: userId,
+          blogId: blogId,
         },
       });
     } catch (error) {
       console.error('Error in addComment:', error);
       throw new Error('Failed to add a comment!');
+    }
+  }
+
+  async deleteComment(_id: number, commentId: number): Promise<any> {
+    try {
+      return await this.prisma.comment.delete({
+        where: {
+          id: commentId,
+        },
+      });
+    } catch (error) {
+      console.error('Error in deleteComment:', error);
+      throw new Error('Failed to delete a comment!');
     }
   }
 
@@ -218,6 +266,7 @@ export class BlogService {
           select: {
             name: true,
             surname: true,
+            profileImage: true,
           },
         },
       },

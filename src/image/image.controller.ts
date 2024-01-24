@@ -22,17 +22,24 @@ export class ImageController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
   uploadFile(@UploadedFile() file): Observable<object> {
-    console.log(typeof file?.filename);
+    console.log(file);
     return of({ imagePath: file.path });
   }
 
-  @Get(':imagename')
+  @Get('profile/:imagename')
   findProfileImage(
     @Param('imagename') imagename,
     @Res() res,
   ): Observable<object> {
     return of(
-      res.sendfile(join(process.cwd(), 'uploads/profileimages/' + imagename)),
+      res.sendfile(join(process.cwd(), 'uploads/profileImages/' + imagename)),
+    );
+  }
+
+  @Get('blog/:imagename')
+  findPostImage(@Param('imagename') imagename, @Res() res): Observable<object> {
+    return of(
+      res.sendfile(join(process.cwd(), 'uploads/postImages/' + imagename)),
     );
   }
 }

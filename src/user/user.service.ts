@@ -6,7 +6,7 @@ import {
 import { CreateUserDto } from './dto/user.dto';
 import { compare, hash } from 'bcrypt';
 import { PrismaService } from '../prisma.service';
-import { PasswordMismatchException } from '../../exceptions/passwordMismatchException';
+import { PasswordMismatchException } from '../exceptions/passwordMismatchException';
 
 @Injectable()
 export class UserService {

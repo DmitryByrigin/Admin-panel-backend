@@ -1,14 +1,17 @@
-import { ArrayMinSize, IsArray, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, IsArray, ArrayMinSize } from 'class-validator';
 
 export class CreateBlogDto {
   image: string;
 
+  @IsNotEmpty()
   @IsString()
   title: string;
 
-  @IsOptional()
-  content?: string;
+  @IsNotEmpty()
+  @IsString()
+  content: string;
 
+  @IsNotEmpty()
   @IsArray()
   @ArrayMinSize(1)
   @IsString({ each: true })

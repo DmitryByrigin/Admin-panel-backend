@@ -48,7 +48,7 @@ model Comment {
   blogId    Int
 
   user User @relation(fields: [userId], references: [id])
-  blog Blog @relation(fields: [blogId], references: [id])
+  blog Blog @relation(fields: [blogId], references: [id], onDelete: Cascade)
 }
 
 enum UserRole {

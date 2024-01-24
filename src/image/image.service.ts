@@ -27,11 +27,8 @@ export class ImageService {
   async uploadImage(file) {
     console.log(file);
     const uploadDir = path.join(
-      __dirname,
-      '..',
-      '..',
       'uploads',
-      'profileimages',
+      'postImages',
     );
     let filename: string =
       path.parse(file.originalname).name.replace(/\s/g, '') + uuidv4();

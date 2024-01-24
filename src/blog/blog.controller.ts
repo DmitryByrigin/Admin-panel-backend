@@ -3,6 +3,7 @@ import {
   Body,
   ConflictException,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -23,6 +24,8 @@ import { Response } from 'express';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { ImageService } from '../image/image.service';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { Roles } from '../decorators/roles.decorator';
+import { Role } from '../enums/roles.enum';
 
 @Controller('blog')
 export class BlogController {
@@ -138,11 +141,14 @@ export class BlogController {
   }
 
   @UseGuards(JwtGuard)
+  @UseInterceptors(FileInterceptor('image'))
   @Patch(':id')
+  @Roles(Role.Admin)
   async update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateBlogDto: UpdateBlogDto,
     @Res() res: Response,
+    @UploadedFile() file: Express.Multer.File,
   ) {
     // return this.blogService.update(+id, updateBlogDto);
 
@@ -150,13 +156,21 @@ export class BlogController {
     if (ownerId) {
       updateBlogDto.userId = ownerId;
       console.log(updateBlogDto.userId);
-      const data = await this.blogService.update(+id, updateBlogDto);
+      const { filename } = await this.imageService.uploadImage(file);
+      updateBlogDto.image = filename;
+      const data = await this.blogService.update(+id, updateBlogDto); // передать объект dto в метод update
       console.log(data);
       if (data) res.status(200).json(data);
       return data;
     } else throw new ConflictException("You can't create post!");
   }
-  // BlogController
+
+  @UseGuards(JwtGuard)
+  @Delete('remove/:id')
+  @Roles(Role.Admin)
+  removePost(@Param('id') id: number) {
+    return this.blogService.remove(id);
+  }
 
   @UseGuards(JwtGuard)
   @Post(':id/comments')
@@ -171,7 +185,11 @@ export class BlogController {
       if (!user || !user) {
         throw new ConflictException("You can't add a comment!");
       }
-      const data = await this.blogService.addComment(+id, createCommentDto);
+      const data = await this.blogService.addComment(
+        user,
+        +id,
+        createCommentDto,
+      );
       if (data) {
         return res.status(200).json(data);
       } else {
@@ -179,6 +197,31 @@ export class BlogController {
       }
     } catch (error) {
       console.error('Error in addComment:', error);
+      return res.status(500).json({ message: 'Internal Server Error' });
+    }
+  }
+
+  @UseGuards(JwtGuard)
+  @Delete(':id/comments/:commentId')
+  @Roles(Role.Admin)
+  async deleteComment(
+    @Param('id') id: string,
+    @Param('commentId') commentId: string,
+    @Res() res: Response,
+  ) {
+    const user = res.locals.id;
+    try {
+      if (!user || !user) {
+        throw new ConflictException("You can't delete a comment!");
+      }
+      const data = await this.blogService.deleteComment(+id, +commentId);
+      if (data) {
+        return res.status(200).json(data);
+      } else {
+        throw new ConflictException('Failed to delete a comment!');
+      }
+    } catch (error) {
+      console.error('Error in deleteComment:', error);
       return res.status(500).json({ message: 'Internal Server Error' });
     }
   }
