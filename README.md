@@ -68,6 +68,12 @@ This command opens Prisma Studio, a graphical interface for interacting with you
 
 ```
 
+## Docker
+```bash
+# Command to builds, (re)creates, starts, and attaches to containers for a service.
+$ docker-compose up
+```
+
 ## Important information
 
 ### In the Contents.ts file, the lib folder, there should be a locale host on which the backend is running
