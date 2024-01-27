@@ -182,7 +182,7 @@ export class BlogController {
   ) {
     const user = res.locals.id;
     try {
-      if (!user || !user) {
+      if (!user) {
         throw new ConflictException("You can't add a comment!");
       }
       const data = await this.blogService.addComment(
