@@ -1,0 +1,653 @@
+{
+	"info": {
+		"_postman_id": "23d15ddd-1537-4123-9d80-0bc15e5c82d4",
+		"name": "Exploring Nest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29322617",
+		"_collection_link": "https://crimson-spaceship-657480.postman.co/workspace/BEST-WEB-DESIGN~87057148-830e-412b-8324-71c5cffb0eb5/collection/29322617-23d15ddd-1537-4123-9d80-0bc15e5c82d4?action=share&source=collection_link&creator=29322617"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"dmitri.d907@gmail.com\",\r\n    \"password\":\"Karlos3000!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/auth/login",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Dmitry\",\r\n    \"surname\": \"Burygin\",\r\n    \"email\":\"dmitri.d907@gmail.com\",\r\n    \"password\":\"Karlos3000!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/auth/register",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Get all posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/blog",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API}}/blog/29",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog",
+								"29"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRtaXRyaWk5MDdAZ21haWwuY29tIiwiaWQiOiI2NmU5NjY0Yy1hYWM0LTQwNDgtYWRjYS0wNTJlYzdlYWU1NGYiLCJzdWIiOnsibmFtZSI6IkRtaXRyeSJ9LCJpYXQiOjE3MDE4ODkxNzUsImV4cCI6MTcwMTg5Mjc3NX0.l3uz-H0KRQcncajEKL3jwYFndP3PnKh6MKeSjmYMHmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Artem\",\r\n    \"content\": \"Ipsun\",\r\n    \"categories\": [\"Games\"],\r\n    \"image\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/blog/29",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog",
+								"29"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRtaXRyaWk5MDdAZ21haWwuY29tIiwiaWQiOiI2NmU5NjY0Yy1hYWM0LTQwNDgtYWRjYS0wNTJlYzdlYWU1NGYiLCJzdWIiOnsibmFtZSI6IkRtaXRyeSJ9LCJpYXQiOjE3MDE4ODkxNzUsImV4cCI6MTcwMTg5Mjc3NX0.l3uz-H0KRQcncajEKL3jwYFndP3PnKh6MKeSjmYMHmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Refresh eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRtaXRyaWlAZ21haWwuY29tIiwic3ViIjp7Im5hbWUiOiJEbWl0cnkifSwiaWF0IjoxNzAxODc0MDg0LCJleHAiOjE3MDI0Nzg4ODR9.1oYNxd5J4Taim6hdIH4o7EwRafoSNNb6EzY0yOPxccA",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Dima\",\r\n    \"content\": \"lorem\",\r\n    \"categories\": [\"Movies\"],\r\n    \"image\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/blog",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRtaXRyaWk5MDdAZ21haWwuY29tIiwiaWQiOiI2NmU5NjY0Yy1hYWM0LTQwNDgtYWRjYS0wNTJlYzdlYWU1NGYiLCJzdWIiOnsibmFtZSI6IkRtaXRyeSJ9LCJpYXQiOjE3MDE4ODg0NDUsImV4cCI6MTcwMTg5MjA0NX0.zroccH8-zSVqvkBDsWUaJ4mziq1WimS8whyOmEiv6fA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API}}/blog/11",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get post image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API}}/blog/imagename",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog",
+								"imagename"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post comment for post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRkZG1pdHJkaWl5Z9CwZzlmMDdAZ21haWwuY29tIiwiaWQiOiJlMDdkYjY4Ni0yYjg1LTQ5NTItODAwOC1mOWUxOWFjNWE3YzYiLCJzdWIiOnsibmFtZSI6IkRtaXRyeSJ9LCJpYXQiOjE3MDYwMjc2NjksImV4cCI6MTcwNjAzMTI2OX0.OXRBDbtTMxibnT7gRnzhglHSFv_JRVroWjSM3tYdBZA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":\"Comment\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/blog/postId/comments",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog",
+								"postId",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search by category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/blog?sortBy=Health",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog"
+							],
+							"query": [
+								{
+									"key": "sortType",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "Health"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add views",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API}}/blog/postId/view",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog",
+								"postId",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Like",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API}}/blog/postId/like",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog",
+								"postId",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sorted by params",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API}}/blog/categories/Health?sortBy=views&sortType=asc",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog",
+								"categories",
+								"Health"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "views"
+								},
+								{
+									"key": "sortType",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get comments by post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRtaXRyaWk5MDdAZ21haWwuY29tIiwiaWQiOiJjNDI5NDAwNi1mOTgwLTRmNWEtYWIzMS03M2EwN2ZmZGJiODUiLCJzdWIiOnsibmFtZSI6IkRtaXRyeSJ9LCJpYXQiOjE3MDU5Mjk5NTAsImV4cCI6MTcwNTkzMzU1MH0.uXiehbpizgrzvKuc_eCMejaDNO8G5JVj8ymCV1jVsx4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API}}/blog/104/comments",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog",
+								"104",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API}}/blog/postId/comments/commentId",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog",
+								"postId",
+								"comments",
+								"commentId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRtaXRyaWk5MDdAZ21haWwuY29tIiwiaWQiOiJjNDI5NDAwNi1mOTgwLTRmNWEtYWIzMS03M2EwN2ZmZGJiODUiLCJzdWIiOnsibmFtZSI6IkRtaXRyeSJ9LCJpYXQiOjE3MDU5Mjk5NTAsImV4cCI6MTcwNTkzMzU1MH0.uXiehbpizgrzvKuc_eCMejaDNO8G5JVj8ymCV1jVsx4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":\"f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/blog/99/comments/",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"blog",
+								"99",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get user data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRtaXRyaWlAZ21haWwuY29tIiwic3ViIjp7Im5hbWUiOiJEbWl0cnkifSwiaWF0IjoxNzAxODc0MDg0LCJleHAiOjE3MDE4Nzc2ODR9.LkFRS84yMXugm-MGszTseu-PFUKgGq_W0qaHGoMfStM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Refresh eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRtaXRyaWlAZ21haWwuY29tIiwic3ViIjp7Im5hbWUiOiJEbWl0cnkifSwiaWF0IjoxNzAxODcwNDM5LCJleHAiOjE3MDI0NzUyMzl9.GNucHtc0BTpO37o_KO_VIFkYzHGsD2G5I2gRCqGK04I",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{API}}/user/b7a1ac18-3b40-4536-9375-29cac106d327",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"user",
+								"b7a1ac18-3b40-4536-9375-29cac106d327"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfileImage",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Change password",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRkZG1pdHJkaWl5Z9CwZzlmMDdAZ21haWwuY29tIiwiaWQiOiJlMDdkYjY4Ni0yYjg1LTQ5NTItODAwOC1mOWUxOWFjNWE3YzYiLCJzdWIiOnsibmFtZSI6IkRtaXRyeSJ9LCJpYXQiOjE3MDYwMjc2NjksImV4cCI6MTcwNjAzMTI2OX0.OXRBDbtTMxibnT7gRnzhglHSFv_JRVroWjSM3tYdBZA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"currentPass\":\"123\",\r\n      \"newPass\":\"Karlos3000!\",\r\n      \"confirmPass\":\"Karlos3000!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API}}/user/changePass",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"user",
+								"changePass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get profile Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API}}/image/photo17024099903361b531-2f32-41db-be9f-606603edf029.jpeg",
+							"host": [
+								"{{API}}"
+							],
+							"path": [
+								"image",
+								"photo17024099903361b531-2f32-41db-be9f-606603edf029.jpeg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Uploading user image",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
